@@ -1,16 +1,16 @@
-package implementation;
+package implementation.core;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class NgramIterator implements Iterator<String> {
+public class NtupleIterator implements Iterator<String> {
 	
 	 String[] words;
 	 int currentPosition = 0;
 	 int n;
 
 	    
-	public NgramIterator(int n, String str) {
+	public NtupleIterator(int n, String str) {
 	        this.n = n;
 	        words = str.split(" ");
 	}

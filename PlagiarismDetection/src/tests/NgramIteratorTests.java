@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.NoSuchElementException;
 
-import implementation.NgramIterator;
+import implementation.core.NtupleIterator;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class NgramIteratorTests {
 	@Test
 	public void testGetFirstN() {
 		
-		NgramIterator iter = new NgramIterator(3, "go for a jog");
+		NtupleIterator iter = new NtupleIterator(3, "go for a jog");
 		
 		String actual = iter.next();
 		
@@ -26,7 +26,7 @@ public class NgramIteratorTests {
 	@Test
 	public void testGetNextN() {
 		
-		NgramIterator iter = new NgramIterator(3, "go for a jog");
+		NtupleIterator iter = new NtupleIterator(3, "go for a jog");
 		
 		iter.next();
 		
@@ -41,7 +41,7 @@ public class NgramIteratorTests {
 	@Test(expected=NoSuchElementException.class)
 	public void testNoMoreTuples() {
 		
-		NgramIterator iter = new NgramIterator(3, "go for a jog");
+		NtupleIterator iter = new NtupleIterator(3, "go for a jog");
 		
 		iter.next();
 		iter.next();
@@ -53,7 +53,7 @@ public class NgramIteratorTests {
 	@Test
 	public void testEmptyString() {
 		
-		NgramIterator iter = new NgramIterator(3, "");
+		NtupleIterator iter = new NtupleIterator(3, "");
 		
 		boolean actual = iter.hasNext();
 		boolean expected = false;

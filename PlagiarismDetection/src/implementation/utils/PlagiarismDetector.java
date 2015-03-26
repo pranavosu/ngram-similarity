@@ -1,4 +1,6 @@
-package implementation;
+package implementation.utils;
+
+import implementation.core.SimilarityChecker;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -45,6 +47,7 @@ public class PlagiarismDetector {
 			
 			while((line = reader.readLine()) != null){
 				
+				line = sanitizeInput(line);
 				similarityChecker.generateTuplesFromSentence(n, line);
 				
 			}
@@ -66,6 +69,7 @@ public class PlagiarismDetector {
 			
 			while((line = reader.readLine()) != null){
 				
+				line = sanitizeInput(line);
 				similarityChecker.checkSentenceForExistingTuples(n, line);
 				
 			}
@@ -86,6 +90,13 @@ public class PlagiarismDetector {
 		
 		
 		
+	}
+
+	public static String sanitizeInput(String line) {
+		
+		line = line.replaceAll("[\\.,!\\?:;\\-_]", "").toLowerCase();
+		
+		return line;
 	}
 	
 	
