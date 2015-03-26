@@ -77,4 +77,28 @@ public class SimilarityCheckerTests {
 		
 	}
 	
+	@Test
+	public void testMultipleSynonymMatch() {
+		
+		SimilarityChecker sc = new SimilarityChecker();
+		
+		int n = 3;
+		
+		ArrayList<String> synonymList = new ArrayList<String>();
+		synonymList.add("run sprint jog");
+		synonymList.add("go went");
+		sc.addSynonyms(synonymList);
+		
+		sc.generateTuplesFromSentence(n, "go for run");
+		sc.checkSentenceForExistingTuples(n, "went for jog");
+		
+		double expected = 100.0;
+		double actual = sc.getSimilarityMeasure();
+		
+		assertEquals(expected, actual,0.0001);
+		
+	}
+	
+	
+	
 }

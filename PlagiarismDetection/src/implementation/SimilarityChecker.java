@@ -21,21 +21,16 @@ public class SimilarityChecker {
 		
 	}
 	
-	
 	public void addSynonyms(ArrayList<String> synonymList){
-		
 		
 		for(String synonyms: synonymList){
 			
-			
 			String[] synList = synonyms.split("\\s");
-			
 			Set<String> synSet =  new HashSet<String>();
-			
+		
 			for(String synonym: synList){
 				
 				synSet.add(synonym);
-				
 			}
 			
 			for(String synonym: synList){
@@ -43,8 +38,6 @@ public class SimilarityChecker {
 				synonymMap.put(synonym, synSet);
 				
 			}
-			
-			
 		}
 		
 	}
@@ -80,12 +73,11 @@ public class SimilarityChecker {
 		if(tuplesToCheck.contains(tuple)) 
 			return true;
 		else
-			return fuzzyMatch(tuple);
+			return synonymMatch(tuple);
 		
 	}
 
-
-	private boolean fuzzyMatch(String tuple) {
+	private boolean synonymMatch(String tuple) {
 	
 		String[] words = tuple.split("\\s");
 		
@@ -98,7 +90,7 @@ public class SimilarityChecker {
 			for(String synonym: synSet){
 				
 				if(!synonym.equals(word)){
-					
+					    
 					StringBuffer mTuple = new StringBuffer(tuple);
 					
 					int start = tuple.indexOf(word);
